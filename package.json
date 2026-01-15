@@ -1,0 +1,19 @@
+{
+  "name": "gamescan-discord-bot",
+  "version": "1.0.0",
+  "main": "bot.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "discord.js": "^14.25.1",
+    "dotenv": "^17.2.3",
+    "express": "^4.22.1",
+    "openai": "^6.13.0"
+  }
+}
