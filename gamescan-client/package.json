@@ -1,0 +1,65 @@
+{
+  "name": "gamescan-client",
+  "version": "1.0.0",
+  "description": "Gamescan desktop client — scans Rocket League & Fortnite replays and syncs stats to your dashboard",
+  "main": "bundled/main.js",
+  "author": "Gamescan",
+  "license": "MIT",
+  "scripts": {
+    "start": "npm run bundle && electron .",
+    "dev": "npm run bundle && electron . --dev",
+    "bundle": "node scripts/bundle.js",
+    "build": "npm run bundle && electron-builder",
+    "build:win": "npm run bundle && electron-builder --win",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "chokidar": "^3.6.0",
+    "electron-log": "^5.1.2",
+    "electron-store": "^8.2.0",
+    "electron-updater": "^6.1.8",
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.21.5",
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.gamescan.client",
+    "productName": "Gamescan",
+    "copyright": "Copyright © 2025 Gamescan",
+    "icon": "assets/icon.ico",
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64"] }
+      ],
+      "artifactName": "Gamescan-Setup-${version}.exe"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "assets/icon.ico",
+      "uninstallerIcon": "assets/icon.ico",
+      "installerHeaderIcon": "assets/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Gamescan",
+      "license": "assets/license.txt",
+      "installerSidebar": "assets/installer-sidebar.bmp"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "UnderspawnUK",
+      "repo": "gamescan-client"
+    },
+    "files": [
+      "bundled/**/*",
+      "assets/**/*",
+      "!**/*.map"
+    ],
+    "extraResources": [
+      { "from": "assets/", "to": "assets/", "filter": ["**/*"] }
+    ]
+  }
+}
